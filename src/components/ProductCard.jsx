@@ -1,5 +1,3 @@
-// src/components/ProductCard.js
-
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../slices/cartSlice';

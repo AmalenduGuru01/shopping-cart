@@ -1,29 +1,26 @@
-// src/components/ProductCard.js
+import React, { useEffect, useState } from 'react';
+import ProductCard from './ProductCard';
 
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../slices/cartSlice';
+const ProductList = () => {
+  const [products, setProducts] = useState([]);
 
-const ProductCard = ({ product }) => {
-  const dispatch = useDispatch();
-
-  const handleAddToCart = () => {
-    dispatch(addItem(product));
-  };
+  useEffect(() => {
+    // Using local JSON data
+    const fetchProducts = async () => {
+      const response = await fetch('/products.json');
+      const data = await response.json();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
 
   return (
-    <div className="border rounded-md p-4 shadow-md">
-      <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4" />
-      <h2 className="text-lg font-bold mb-2">{product.name}</h2>
-      <p className="text-gray-700 mb-4">${product.price}</p>
-      <button
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-        onClick={handleAddToCart}
-      >
-        Add to Cart
-      </button>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
 };
 
-export default ProductCard;
+export default ProductList;
