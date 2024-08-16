@@ -1,9 +1,12 @@
+import React from 'react';
+import Header from './components/Header';
+import ProductList from './components/ProductList';
+
 function App() {
   return (
     <div className="App">
-
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-
+      <Header />
+      <ProductList />
     </div>
   );
 }
