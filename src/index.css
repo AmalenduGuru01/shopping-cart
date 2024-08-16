@@ -17,3 +17,13 @@
     transition: opacity 300ms;
   }
   
+
+body {
+  padding-top: 64px; 
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 72px;
+  }
+}
