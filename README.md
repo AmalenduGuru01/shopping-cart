@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Shopping Cart App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is an e-commerce shopping cart application developed using React.js, Redux, and Tailwind CSS. It provides a fully functional shopping experience with features including product listing, cart management, and checkout. The application showcases a modern UI inspired by leading e-commerce platforms.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Product Listing Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Product Grid**: Displays 6-10 products using a responsive grid layout.
+- **Product Details**: Each product card includes:
+  - Product image
+  - Product name
+  - Product price (formatted for currency)
+  - "Add to Cart" button with visual feedback (animation)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Add to Cart Functionality
 
-### `npm test`
+- **Cart Updates**: Clicking "Add to Cart" updates the cart and provides animation feedback.
+- **Cart Icon/Counter**: Reflects the number of items added (optional feature).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Cart Page
 
-### `npm run build`
+- **Product List**: Shows all added products with:
+  - Product image
+  - Product name
+  - Product price
+  - Quantity selector (up/down buttons or input field)
+  - "Remove Item" button
+- **Cart Summary**: Includes:
+  - Subtotal: Total cost of items based on quantity and price
+  - Discounts: Ability to apply fixed or percentage discounts
+  - Total Price: Final amount after discounts
+  - Checkout Button: Option to proceed to a simulated checkout page (or provide a success message)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Checkout Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Order Summary**: Shows subtotal, coupon discount, and total price.
+- **Coupon Application**: Allows users to apply coupon codes with validation and error handling.
+- **Payment Animation**: The “Proceed to Payment” button includes a stylish animation and clears the cart upon successful checkout.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Sample Discount Codes: SAVE10, DISCOUNT15 and OFF20.

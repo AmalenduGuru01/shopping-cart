@@ -1,8 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.cart-item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
-.fade-enter {
+.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+  
+  .fade-enter {
     opacity: 0;
   }
   .fade-enter-active {
@@ -17,17 +25,3 @@
     transition: opacity 300ms;
   }
   
-
-body {
-  padding-top: 64px;
-  height: 100%; 
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-top: 72px;
-  }
-}
-
-
-
