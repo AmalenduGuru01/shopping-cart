@@ -25,11 +25,11 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    navigate("/checkout"); // Navigate to the Checkout page
+    navigate("/checkout"); 
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 ">
       <h2 className="text-2xl font-bold mb-6">Your Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>

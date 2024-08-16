@@ -5,7 +5,6 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Using local JSON data
     const fetchProducts = async () => {
       const response = await fetch('/products.json');
       const data = await response.json();

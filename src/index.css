@@ -19,7 +19,8 @@
   
 
 body {
-  padding-top: 64px; 
+  padding-top: 64px;
+  height: 100%; 
 }
 
 @media (max-width: 768px) {
@@ -27,3 +28,6 @@ body {
     padding-top: 72px;
   }
 }
+
+
+

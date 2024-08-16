@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
-  discount: 0, // Fixed discount amount
-  couponDiscount: 0, // Discount from applying a coupon
+  discount: 0, 
+  couponDiscount: 0, 
 };
 
 const validCoupons = {

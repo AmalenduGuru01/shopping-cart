@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { applyCouponDiscount, clearCart } from "../slices/cartSlice";
-import "./CheckOut.css"; // Import the CSS file
+import "./CheckOut.css"; 
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const CheckoutPage = () => {
   };
 
   const calculateTotal = (subtotal) => {
-    const discountRate = 0.1; // 10% discount
+    const discountRate = 0.1; 
     const discount = subtotal * discountRate + couponDiscount;
     return (subtotal - discount).toFixed(2);
   };
@@ -39,8 +39,8 @@ const CheckoutPage = () => {
     setIsAnimating(true);
     setTimeout(() => {
       alert("Payment process would start here...");
-      dispatch(clearCart()); // Clear the cart after payment
-      setIsAnimating(false); // Reset animation state if needed
+      dispatch(clearCart()); 
+      setIsAnimating(false); 
     }, 600);
   };
 
