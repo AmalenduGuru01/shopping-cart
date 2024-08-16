@@ -3,7 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   items: [],
   discount: 0, // Fixed discount amount
-  extraDiscount: 0, // Additional discount based on payment method
+  couponDiscount: 0, // Discount from applying a coupon
+};
+
+const validCoupons = {
+  SAVE10: 10,
+  DISCOUNT15: 15,
+  OFF20: 20,
 };
 
 const cartSlice = createSlice({
@@ -21,7 +27,6 @@ const cartSlice = createSlice({
     removeItem: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload);
     },
-    
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       const item = state.items.find(item => item.id === id);
@@ -32,15 +37,26 @@ const cartSlice = createSlice({
     applyFixedDiscount: (state, action) => {
       state.discount = action.payload;
     },
-    applyExtraDiscount: (state, action) => {
-      state.extraDiscount = action.payload;
+    applyCouponDiscount: (state, action) => {
+      const couponCode = action.payload;
+      const discount = validCoupons[couponCode];
+      console.log("YEH TOH DEKH YAAAR: ",discount)
+      if (discount) {
+        state.couponDiscount = discount;
+      } else {
+        state.couponDiscount = 0;
+      }
     },
     clearDiscounts: (state) => {
       state.discount = 0;
-      state.extraDiscount = 0;
+      state.couponDiscount = 0;
+    },
+    clearCart: (state) => {
+      state.items = [];
+      state.couponDiscount = 0;
     },
   },
 });
 
-export const { addItem, removeItem, updateQuantity, applyFixedDiscount, applyExtraDiscount, clearDiscounts } = cartSlice.actions;
+export const { addItem, removeItem, updateQuantity, applyFixedDiscount, applyCouponDiscount, clearDiscounts,clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

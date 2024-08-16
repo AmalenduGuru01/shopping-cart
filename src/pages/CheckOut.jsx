@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { applyExtraDiscount, applyFixedDiscount } from "../slices/cartSlice";
+import { applyCouponDiscount, clearCart } from "../slices/cartSlice";
+import "./CheckOut.css"; // Import the CSS file
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const couponDiscount = useSelector((state) => state.cart.couponDiscount);
   const [couponCode, setCouponCode] = useState("");
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [couponError, setCouponError] = useState("");
 
   const calculateSubtotal = () => {
     return cartItems
@@ -13,28 +17,35 @@ const CheckoutPage = () => {
       .toFixed(2);
   };
 
-  const calculateDiscount = (subtotal) => {
+  const calculateTotal = (subtotal) => {
     const discountRate = 0.1; // 10% discount
-    return (subtotal * discountRate).toFixed(2);
-  };
-
-  const calculateTotal = (subtotal, discount) => {
+    const discount = subtotal * discountRate + couponDiscount;
     return (subtotal - discount).toFixed(2);
   };
 
   const handleApplyCoupon = () => {
-    const discount = 10; // Example fixed discount amount
-    dispatch(applyFixedDiscount(discount));
+    dispatch(applyCouponDiscount(couponCode));
   };
 
-  const handleAdditionalDiscount = (discountType) => {
-    const extraDiscount = discountType === "debit" ? 5 : 7; // Example additional discounts
-    dispatch(applyExtraDiscount(extraDiscount));
+  useEffect(() => {
+    if (couponCode && couponDiscount === 0) {
+      setCouponError("Invalid Coupon Code");
+    } else {
+      setCouponError("");
+    }
+  }, [couponCode, couponDiscount]);
+
+  const handlePaymentClick = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      alert("Payment process would start here...");
+      dispatch(clearCart()); // Clear the cart after payment
+      setIsAnimating(false); // Reset animation state if needed
+    }, 600);
   };
 
   const subtotal = calculateSubtotal();
-  const discount = calculateDiscount(subtotal);
-  const total = calculateTotal(subtotal, discount);
+  const total = calculateTotal(subtotal);
 
   return (
     <div className="p-6">
@@ -42,7 +53,7 @@ const CheckoutPage = () => {
       <div className="mt-6 p-4 bg-gray-100 rounded">
         <h3 className="text-xl font-bold">Order Summary</h3>
         <p className="text-lg mt-2">Subtotal: ${subtotal}</p>
-        <p className="text-lg mt-2">Discount: -${discount}</p>
+        <p className="text-lg mt-2">Coupon Discount: -${couponDiscount}</p>
         <p className="text-lg mt-2 font-bold">Total: ${total}</p>
         <div className="mt-4">
           <input
@@ -58,30 +69,16 @@ const CheckoutPage = () => {
           >
             Apply Coupon
           </button>
+          {couponError && (
+            <p className="text-red-500 mt-2">{couponError}</p>
+          )}
         </div>
-        <div className="mt-4">
-          <label className="block">
-            <input
-              type="radio"
-              name="discount"
-              value="debit"
-              onClick={() => handleAdditionalDiscount("debit")}
-              className="mr-2"
-            />
-            Debit Card Discount
-          </label>
-          <label className="block mt-2">
-            <input
-              type="radio"
-              name="discount"
-              value="credit"
-              onClick={() => handleAdditionalDiscount("credit")}
-              className="mr-2"
-            />
-            Credit Card Discount
-          </label>
-        </div>
-        <button className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600">
+        <button
+          onClick={handlePaymentClick}
+          className={`bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600 ${
+            isAnimating ? "payment-button-animation" : ""
+          }`}
+        >
           Proceed to Payment
         </button>
       </div>
