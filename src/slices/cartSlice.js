@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
+  discount: 0, // Fixed discount amount
+  extraDiscount: 0, // Additional discount based on payment method
 };
 
 const cartSlice = createSlice({
@@ -17,8 +19,9 @@ const cartSlice = createSlice({
       }
     },
     removeItem: (state, action) => {
-      state.items = state.items.filter(item => item.id !== action.payload.id);
+      state.items = state.items.filter(item => item.id !== action.payload);
     },
+    
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       const item = state.items.find(item => item.id === id);
@@ -26,8 +29,18 @@ const cartSlice = createSlice({
         item.quantity = quantity;
       }
     },
+    applyFixedDiscount: (state, action) => {
+      state.discount = action.payload;
+    },
+    applyExtraDiscount: (state, action) => {
+      state.extraDiscount = action.payload;
+    },
+    clearDiscounts: (state) => {
+      state.discount = 0;
+      state.extraDiscount = 0;
+    },
   },
 });
 
-export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
+export const { addItem, removeItem, updateQuantity, applyFixedDiscount, applyExtraDiscount, clearDiscounts } = cartSlice.actions;
 export default cartSlice.reducer;

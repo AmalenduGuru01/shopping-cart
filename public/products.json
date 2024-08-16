@@ -19,5 +19,40 @@
       "price": 49.99,
       "image": "https://via.placeholder.com/150",
       "description": "Portable Bluetooth speaker with deep bass."
+    },
+    {
+      "id": 4,
+      "name": "Smart Brush",
+      "price": 199.99,
+      "image": "https://via.placeholder.com/150",
+      "description": "A high-quality smart brush."
+    },
+    {
+      "id": 5,
+      "name": "Smart Watch",
+      "price": 199.99,
+      "image": "https://via.placeholder.com/150",
+      "description": "A high-quality smart watch."
+    },
+    {
+      "id": 6,
+      "name": "Smart Watch",
+      "price": 199.99,
+      "image": "https://via.placeholder.com/150",
+      "description": "A high-quality smart watch."
+    },
+    {
+      "id": 7,
+      "name": "Smart Watch",
+      "price": 199.99,
+      "image": "https://via.placeholder.com/150",
+      "description": "A high-quality smart watch."
+    },
+    {
+      "id": 8,
+      "name": "Smart Watch",
+      "price": 199.99,
+      "image": "https://via.placeholder.com/150",
+      "description": "A high-quality smart watch."
     }
   ]
